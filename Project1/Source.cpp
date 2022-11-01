@@ -17,13 +17,17 @@ int main()
 	SetConsoleOutputCP(1251);  
 	setlocale(LC_CTYPE, "RU");    
 
-	std::cout << "Вступление" << std::endl;
-	std::cout << "Задание" << std::endl;
+	std::cout << "Шаарашидзе Н.Л. группа 415 контрольная работа 1 вариант 5" << std::endl;
+	std::cout << "Необходимо разработать класс для указанной предметной области." << std::endl <<"Доступ к данным реализовать с помощью методов Set, Get, Show." 
+		<< std::endl << "Рейс: пункт назначения, номер рейса, тип самолета, время вылета, дни недели." << std::endl <<"Создать массив объектов. Реализовать возможность получения :"
+		<< std::endl << "– списка рейсов для заданного пункта назначения,"
+		<< std::endl << "– списка рейсов для заданного дня недели,"
+		<< std::endl << "– списка рейсов для заданного дня недели, время вылета для которых позже заданного." << std::endl;
 
 	while (true)
 	{
 		dynamic_array flight = { 0, true, nullptr };
-		std::cout << "Меню: 1 - завершение работы, 2 - консольный ввод. 3 - файловый ввод." << std::endl;
+		std::cout << "Меню:" << std::endl << "1 - завершение работы" << std::endl << "2 - консольный ввод" << std::endl << "3 - файловый ввод" << std::endl;
 		inputChoice input = static_cast<inputChoice>(CheckMenu(three));
 		system("cls");
 		switch (input)
@@ -36,9 +40,6 @@ int main()
 			break;
 		case inputChoice::quit:
 			return 0;
-		default:
-			std::cout << "Костыль." << std::endl;
-			system("pause");
 		}
 
 		if (!flight.isCorrect) 
@@ -48,7 +49,7 @@ int main()
 		}
 
 
-		std::cout << "Выберете способ вывода данных: 1 - консольный вывод, 2 - файловый вывод." << std::endl;
+		std::cout << "Выберете способ вывода данных" <<std::endl << "1 - консольный вывод" << std::endl << "2 - файловый вывод." << std::endl;
 		outputChoice output = static_cast<outputChoice>(CheckMenu(two));
 		system("cls");
 		switch (output)
@@ -65,14 +66,11 @@ int main()
 				continue;
 			}
 			break;
-		default:
-			std::cout << "Костыль." << std::endl;
-			system("pause");
 		}
 
 		while (true) 
 		{
-			std::cout << "Вывести список: 1 - спосок по пункту назначения, 2 - список по дню недели и времени, 3 - список по дню недели." << std::endl;
+			std::cout << "Вывести список:" << std::endl << "1 - список по пункту назначения" << std::endl << "2 - список по дню недели и времени" << std::endl << "3 - список по дню недели." << std::endl;
 			listChoice list = static_cast<listChoice>(CheckMenu(three));
 			system("cls");
 			switch (list)
@@ -86,17 +84,14 @@ int main()
 			case listChoice::weekday_sort:
 				WeekdayList(flight);
 				break;
-			default:
-				std::cout << "Костыль." << std::endl;
-				system("pause");
 			}
-			std::cout << "Рассмотреть иной список: 1 - нет, 2 - да." << std::endl;
+			std::cout << "Рассмотреть иной список" << std::endl << "1 - нет" << std::endl << "2 - да." << std::endl;
 			endChoice end_list_selection = static_cast<endChoice>(CheckMenu(two));
 			if (end_list_selection == endChoice::no)
 				break;
 		}
 		delete[] flight.ptr;
-		std::cout << "Закончить программу: 1 - нет, 2 - да." << std::endl;
+		std::cout << "Закончить программу" << std::endl << "1 - нет" << std::endl << "2 - да." << std::endl;
 		endChoice end_program = static_cast<endChoice>(CheckMenu(two));
 		if (end_program == endChoice::yes) 
 			return 0;

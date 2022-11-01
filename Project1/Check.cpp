@@ -23,36 +23,6 @@ int CheckMenu(int items)
 	}
 }
 
-/*template<typename T>
-T GetPositiveValue()
-{
-	T temp = static_cast<T>(0.0);
-	do
-	{
-		try
-		{
-			std::cin >> temp;
-			std::cout << std::endl;
-			if (std::cin.peek() != '\n') throw std::exception();
-			if (temp <= 0) throw error_;
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			return temp;
-		}
-		catch (const int&)
-		{
-			std::cout << "Число должно быть положительным. Повторите ввод: ";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-		catch (const std::exception&)
-		{
-			std::cout << "Введены некорректные данные. Повторите ввод: ";
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-	} while (true);
-}*/
-
 template<typename T>
 T GetValue() 
 {
