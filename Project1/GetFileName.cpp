@@ -17,9 +17,9 @@ bool IsValidName(std::string name)
 			temp1 = win_name[i] + ".TXT";
 			if (temp1.size() == temp2.size())
 			{
-				for (int j = 0; temp1[j]; j++)
+				for (int j = 0; temp2[j]; j++)
 				{
-					temp1[j] = static_cast<char>(toupper(temp1[j]));
+					temp2[j] = static_cast<char>(toupper(temp2[j]));
 				}
 				if (temp1 == temp2)
 				{

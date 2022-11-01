@@ -10,7 +10,6 @@ void DestinationList(const dynamic_array flight)
 		std::cout << "Ввод: ";
 
 		std::getline(std::cin, value);
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		int count = 0;
 		for (int i = 0; i < flight.size; i++)
@@ -25,7 +24,7 @@ void DestinationList(const dynamic_array flight)
 		if (count == 0)
 			std::cout << "Рейсы в такой пункт назначения отсутсвуют." << std::endl;
 
-		std::cout << "Найти рейсы в иной пункт?\n1 - Нет\n2 - Да" << std::endl;
+		std::cout << "Найти рейсы в иной пункт?\n1 - да\n2 - нет" << std::endl;
 		endChoice end_program = static_cast<endChoice>(CheckMenu(two));
 		system("cls");
 		if (end_program == endChoice::yes)
@@ -126,9 +125,7 @@ void WeekdayList(const dynamic_array flight)
 		std::cout << "Найти рейсы в иное время?\n1 - Нет\n2 - Да" << std::endl;
 		endChoice end_program = static_cast<endChoice>(CheckMenu(two));
 		system("cls");
-		if (end_program == endChoice::yes)
-		{
+		if (end_program == endChoice::no)
 			return;
-		}
 	}
 }

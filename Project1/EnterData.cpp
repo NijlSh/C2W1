@@ -22,7 +22,7 @@ void EnterDepartureTime(Flight& object)
 	while (true)
 	{
 		std::cout << "Ввод: ";
-		temp.minute_ = GetPositiveInt();
+		temp.minute_ = GetInt();
 		if (temp.minute_ > max_minute - 1)
 		{
 			std::cout << "Введите число не более 60." << std::endl;
@@ -62,11 +62,11 @@ void EnterPlaneType(Flight& object)
 void EnterDestination(Flight& object)
 {
 	std::string temp = "";
-
 	std::cout << "Установите пункт назначения." << std::endl;
 
 	while(true)
 	{
+		bool is_correct = true;
 		std::cout << "Ввод: ";
 		getline(std::cin, temp);
 		for (const char c : temp) 
@@ -74,9 +74,12 @@ void EnterDestination(Flight& object)
 			if (isdigit(c))
 			{
 				std::cout << "Название не должно содержать цифр. Повторите ввод." << std::endl;
+				is_correct = false;
 				break;
 			}
 		}
+		if (!is_correct)
+			continue;
 		break;
 	}
 	object.SetDestination(temp);

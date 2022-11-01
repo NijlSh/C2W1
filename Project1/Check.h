@@ -12,4 +12,4 @@ enum numberOfChoice
 
 int CheckMenu(int items);
 int GetPositiveInt();
-bool isNumber(const std::string& str);
+int GetInt();
