@@ -47,4 +47,6 @@ public:
 	std::string GetDestination();
 
 	void ShowFlight(int number);
+
+	bool operator==(const Flight& other);
 };

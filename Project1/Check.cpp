@@ -33,6 +33,8 @@ T GetValue()
 		{
 			std::cin >> temp;
 			std::cout << std::endl;
+			if (std::cin.peek() != '\n')
+				throw std::exception("IncorrectValue");
 			return temp;
 		}
 		catch (const std::exception&)
@@ -64,6 +66,33 @@ T GetPositiveValue()
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	} while (true);
+}
+
+template <typename T>
+T GetNotNegativeValue()
+{
+	T temp = static_cast<T>(0.0);
+	do
+	{
+		try
+		{
+			temp = GetValue<T>();
+			if (temp < 0) throw error_;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			return temp;
+		}
+		catch (const int&)
+		{
+			std::cout << "Число не должно быть отрицательным. Повторите ввод: ";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+	} while (true);
+}
+
+int GetNotNegativeInt() 
+{
+	return GetNotNegativeValue<int>();
 }
 
 int GetPositiveInt()

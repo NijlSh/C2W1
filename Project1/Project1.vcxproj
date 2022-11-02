@@ -136,6 +136,7 @@
     <ClCompile Include="FileOutput.cpp" />
     <ClCompile Include="InputDataCheck.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="GetFileName.h" />
     <ClInclude Include="ConsoleInput.h" />
     <ClInclude Include="FileInput.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="InputDataCheck.h" />
     <ClInclude Include="Items.h" />
     <ClInclude Include="ConsoleOutput.h" />

@@ -15,7 +15,7 @@ enum outputChoice
 	file_output = 2
 };
 
-enum endChoice 
+enum binaryChoice 
 {
 	no = 1,
 	yes = 2

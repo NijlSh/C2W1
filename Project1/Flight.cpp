@@ -56,3 +56,8 @@ void Flight::ShowFlight(int number)
 	std::cout << "Пункт назначения: " << _destination << std::endl;
 	std::cout << "Тип самолёта: " << _plane_type << std::endl;
 }
+
+bool Flight::operator==(const Flight& other) 
+{
+	return _departure_time.hour_ == other._departure_time.hour_ && _departure_time.minute_ == other._departure_time.minute_ && _departure_day == other._departure_day && _plane_type == other._plane_type && _destination == other._destination;
+}
