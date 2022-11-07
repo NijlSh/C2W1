@@ -16,7 +16,7 @@ int getLineI(std::ifstream& file)
 	try
 	{
 		temp_i = stoi(temp_s);
-		if (temp_i <= 0) throw error;
+		if (temp_i < 0) throw error;
 		else return temp_i;
 	}
 	catch (int)

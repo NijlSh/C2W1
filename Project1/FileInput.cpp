@@ -17,7 +17,7 @@ dynamic_array FileInput()
 			std::cout << "Файл успешно открыт." << std::endl;
 			break;
 		}
-		catch (std::exception&)
+		catch (const std::exception&)
 		{
 			std::cout << "Ошибка доступа.\n" << "Хотите попробовать снова? 1 – Нет, 2 – Да" << std::endl;
 			std::cout << "Ввод: ";
@@ -32,8 +32,11 @@ dynamic_array FileInput()
 	try
 	{
 		int size = getLineI(file);
+		if (size > max_size || size <= 0)
+			throw error;
+
 		temp.size = size;
-		temp.ptr = new Flight[temp.size];
+		temp.ptr = new Flight[size];
 		for (int i = 0; i < size; i++)
 		{
 			std::string day = getLineS(file);
@@ -69,7 +72,7 @@ dynamic_array FileInput()
 			isValid = false;
 			for (int j = 0; j < max_plane; j++)
 			{
-				if (day == week_day[j])
+				if (plane == plane_type[j])
 				{
 					isValid = true;
 					break;
@@ -94,7 +97,7 @@ dynamic_array FileInput()
 		std::cout << "Некорректный формат данных." << std::endl;
 		file.close();
 		delete[] temp.ptr;
-		temp.isCorrect = false;
+		temp = { 0, false, nullptr };
 		system("pause");
 		return temp;
 	}

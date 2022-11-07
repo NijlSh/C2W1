@@ -8,10 +8,10 @@ inputChoice InputMenu()
 	return input;
 }
 
-outputChoice OutputMenu() 
+binaryChoice OutputMenu() 
 {
-	std::cout << "Выберете способ вывода данных" << std::endl << "1 - консольный вывод" << std::endl << "2 - файловый вывод" << std::endl;
-	outputChoice output = static_cast<outputChoice>(CheckMenu(two));
+	std::cout << "Сохранить исходные данные в файле:" << std::endl << "1 - нет" << std::endl << "2 - да" << std::endl;
+	binaryChoice output = static_cast<binaryChoice>(CheckMenu(two));
 	return output;
 }
 

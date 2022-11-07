@@ -42,7 +42,7 @@ bool FileOutput(dynamic_array temp)
 	}
 	catch(std::exception&)
 	{
-		std::cout << "Ошибка при записи информации в файл." << std::endl;
+		std::cout << "Ошибка при записи информации в файл. Данные удалены." << std::endl;
 		file.close();
 		return false;
 	}

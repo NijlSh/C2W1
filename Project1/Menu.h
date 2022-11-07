@@ -3,7 +3,7 @@
 #include "Check.h"
 
 inputChoice InputMenu();
-outputChoice OutputMenu();
+binaryChoice OutputMenu();
 binaryChoice EnterListMenu();
 listChoice ListMenu();
 binaryChoice EndProgramMenu();

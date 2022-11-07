@@ -49,4 +49,6 @@ public:
 	void ShowFlight(int number);
 
 	bool operator==(const Flight& other);
+
+	bool operator!=(const Flight& other);
 };

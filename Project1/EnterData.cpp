@@ -39,8 +39,7 @@ void EnterDepartureDay(Flight& object)
 	std::cout << "Установите день недели." << std::endl;
 	std::cout << "1 - понедельник, 2 - вторник, 3 - среда, 4 - четверг, 5 - пятница, 6 - суббота, 7 - воскресенье." << std::endl;
 
-	std::cout << "Ввод: ";
-	int number = CheckMenu(max_day);
+	int number = CheckMenu(max_day) - 1;
 
 	object.SetDepartureDay(week_day[number]);
 }
@@ -50,11 +49,9 @@ void EnterPlaneType(Flight& object)
 {
 	std::cout << "Установите тип самолёта." << std::endl;
 	std::cout << "1 - Airbus A380, 2 - Boeing 787 Dreamliner, 3 - Туполев Ту-154." << std::endl;
-
-	std::cout << "Ввод: ";
 	
-	int number = CheckMenu(max_plane);
-	 object.SetPlaneType(plane_type[number]);
+	int number = CheckMenu(max_plane) - 1;
+	object.SetPlaneType(plane_type[number]);
 }
 
 

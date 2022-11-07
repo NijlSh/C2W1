@@ -49,14 +49,10 @@ int main()
 		}
 
 
-		outputChoice output_choice = OutputMenu();
+		binaryChoice file_output_choice = OutputMenu();
 		system("cls");
-		switch (output_choice)
+		if (file_output_choice == yes) 
 		{
-		case outputChoice::console_output:
-			ConsoleOutput(flight);
-			break;
-		case outputChoice::file_output:
 			if (!FileOutput(flight))
 			{
 				delete[] flight.ptr;
@@ -64,9 +60,9 @@ int main()
 				system("cls");
 				continue;
 			}
-			break;
 		}
 
+		ConsoleOutput(flight);
 
 		while (true) 
 		{

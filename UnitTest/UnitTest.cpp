@@ -2,9 +2,11 @@
 
 #include "CppUnitTest.h"
 
-#include "../Project1/EnterData.h"
-#include "../Project1/Algorithm.h"
+#include "../Project1/Check.cpp"
+#include "../Project1/Algorithm.cpp"
 #include "../Project1/Flight.h"
+#include "../Project1/Flight.cpp"
+#include "../Project1/Items.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,52 +14,72 @@ namespace UnitTest
 {
 	TEST_CLASS(UnitTest)
 	{
-	public:
-
 	private:
-		dynamic_array start;
+		Flight temp_start[5] =
+		{
+			Flight({ 9, 5 }, week_day[2], plane_type[0], "Москва"),
+			Flight({ 10, 20 }, week_day[2], plane_type[2], "Москва"),
+			Flight({ 14, 0 }, week_day[5], plane_type[1], "Минск"),
+			Flight({ 20, 30 }, week_day[2], plane_type[2], "Новосибирск"),
+			Flight({ 6, 0 }, week_day[5], plane_type[0], "Волгоград")
+		};
 
-		dynamic_array temp1;
-		dynamic_array temp2;
-		dynamic_array temp3;
+		dynamic_array start_list = { 5, true, temp_start };
 
-		dynamic_array end1;
-		dynamic_array end2;
-		dynamic_array end3;
+		Flight temp_true1[2]
+		{
+			Flight({ 9, 5 }, week_day[2], plane_type[0], "Москва"),
+			Flight({ 10, 20 }, week_day[2], plane_type[2], "Москва")
+		};
+
+		dynamic_array test1_true_list = { 2, true, temp_true1 };
+
+		Flight temp_true2[2]
+		{
+			Flight({ 10, 20 }, week_day[2], plane_type[2], "Москва"),
+			Flight({ 20, 30 }, week_day[2], plane_type[2], "Новосибирск")
+		};
+
+		dynamic_array test2_true_list = { 2, true, temp_true2 };
+
+		Flight temp_true3[2]
+		{
+			Flight({ 14, 0 }, week_day[5], plane_type[1], "Минск"),
+			Flight({ 6, 0 }, week_day[5], plane_type[0], "Волгоград")
+		};
+
+		dynamic_array test3_true_list = { 2, true, temp_true3 };
 
 	public:
-		TEST_METHOD(test)
+		bool equivalentFlightList(Flight* list1, Flight* list2, int size)
 		{
-			/*start = { 0, true, nullptr };
-			start.ptr = new Flight[5];
-			start.ptr[0] = Flight({ 10, 5 }, week_day[2], plane_type[0], "Москва");
-			start.ptr[1] = Flight({ 10, 20 }, week_day[2], plane_type[2], "Москва");
-			start.ptr[2] = Flight({ 14, 0 }, week_day[5], plane_type[1], "Минск");
-			start.ptr[3] = Flight({ 20, 30 }, week_day[2], plane_type[2], "Новосибирск");
-			start.ptr[4] = Flight({ 6, 0 }, week_day[5], plane_type[0], "Волгоград");
+			for (int i = 0; i < size; i++) {
+				if (list1[i] != list2[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
 
-			temp1 = GetDestinationList(start, "Москва");
-			temp2 = GetWeekdayAndTimeList(start, {10, 10}, 2);
-			temp3 = GetWeekdayList(start, 5);
+		TEST_METHOD(test1)
+		{
+			dynamic_array end_list_test = { 0, true, nullptr };
+			end_list_test = GetDestinationList(start_list, "Москва");
+			Assert::IsTrue(equivalentFlightList(test1_true_list.ptr, end_list_test.ptr, 2));
+		}
 
-			end1 = { 2, true, nullptr };
-			end1.ptr = new Flight[2];
-			end2 = { 2, true, nullptr };
-			end1.ptr = new Flight[2];
-			end3 = { 2, true, nullptr };
-			end1.ptr = new Flight[2];
+		TEST_METHOD(test2)
+		{
+			dynamic_array end_list_test = { 0, true, nullptr };
+			end_list_test = GetWeekdayAndTimeList(start_list, { 10, 10 }, 2);
+			Assert::IsTrue(equivalentFlightList(test2_true_list.ptr, end_list_test.ptr, 2));
+		}
 
-
-			end1.ptr[0] = start.ptr[0];
-			end1.ptr[1] = start.ptr[1];
-			end2.ptr[0] = start.ptr[1];
-			end2.ptr[1] = start.ptr[3];
-			end3.ptr[0] = start.ptr[2];
-			end3.ptr[1] = start.ptr[4];
-
-			Assert::IsTrue(end1.size == temp1.size && end1.ptr[0] == temp1.ptr[0] && end1.ptr[0] == temp1.ptr[0]);
-			Assert::IsTrue(end2.size == temp2.size && end2.ptr[0] == temp2.ptr[0] && end2.ptr[0] == temp2.ptr[0]);
-			Assert::IsTrue(end3.size == temp3.size && end3.ptr[0] == temp2.ptr[0] && end3.ptr[0] == temp3.ptr[0]);*/
+		TEST_METHOD(test3)
+		{
+			dynamic_array end_list_test = { 0, true, nullptr };
+			end_list_test = GetWeekdayList(start_list, 5);
+			Assert::IsTrue(equivalentFlightList(test3_true_list.ptr, end_list_test.ptr, 2));
 		}
 	};
 };

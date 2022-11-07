@@ -9,12 +9,6 @@ enum inputChoice
 	file_input = 3
 };
 
-enum outputChoice 
-{
-	console_output = 1,
-	file_output = 2
-};
-
 enum binaryChoice 
 {
 	no = 1,
@@ -26,7 +20,7 @@ enum listChoice
 	destination_sort = 1,
 	weekday_sort = 2,
 	weekday_and_time_sort = 3
-
+	
 };
 
 typedef struct

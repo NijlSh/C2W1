@@ -4,6 +4,8 @@ void DestinationList(const dynamic_array flight)
 {
 	while (true) 
 	{
+		ConsoleOutput(flight);
+
 		std::string value = "";
 
 		std::cout << "Введите пункт назначения." << std::endl;
@@ -23,12 +25,10 @@ void DestinationList(const dynamic_array flight)
 			std::cout << "Рейсы в данный пункт назначения отсутствуют." << std::endl;
 
 		std::cout << "Найти рейсы в иной пункт?\n1 - нет\n2 - да" << std::endl;
-		binaryChoice end_program = static_cast<binaryChoice>(CheckMenu(two));
+		binaryChoice end_function = static_cast<binaryChoice>(CheckMenu(two));
 		system("cls");
-		if (end_program == binaryChoice::no)
-		{
+		if (end_function == binaryChoice::no)
 			return;
-		}
 	}
 }
 
@@ -36,6 +36,8 @@ void WeekdayAndTimeList(const dynamic_array flight)
 {
 	while (true) 
 	{
+		ConsoleOutput(flight);
+
 		std::cout << "Выберете день недели." << std::endl;
 		std::cout << "1 - понедельник, 2 - вторник, 3 - среда, 4 - четверг, 5 - пятница, 6 - суббота, 7 - воскресенье." << std::endl;
 		int number = CheckMenu(max_day) - 1;
@@ -82,12 +84,10 @@ void WeekdayAndTimeList(const dynamic_array flight)
 		
 
 		std::cout << "Найти рейсы в иное время?\n1 - Нет\n2 - Да" << std::endl;
-		binaryChoice end_program = static_cast<binaryChoice>(CheckMenu(two));
+		binaryChoice end_function = static_cast<binaryChoice>(CheckMenu(two));
 		system("cls");
-		if (end_program == binaryChoice::no)
-		{
+		if (end_function == binaryChoice::no)
 			return;
-		}
 	}
 }
 
@@ -95,6 +95,8 @@ void WeekdayList(const dynamic_array flight)
 {
 	while (true) 
 	{
+		ConsoleOutput(flight);
+
 		std::cout << "Установите день недели." << std::endl;
 		std::cout << "1 - понедельник, 2 - вторник, 3 - среда, 4 - четверг, 5 - пятница, 6 - суббота, 7 - воскресенье." << std::endl;
 
@@ -114,9 +116,9 @@ void WeekdayList(const dynamic_array flight)
 
 
 		std::cout << "Найти рейсы в иное время?\n1 - Нет\n2 - Да" << std::endl;
-		binaryChoice end_program = static_cast<binaryChoice>(CheckMenu(two));
+		binaryChoice end_function = static_cast<binaryChoice>(CheckMenu(two));
 		system("cls");
-		if (end_program == binaryChoice::no)
+		if (end_function == binaryChoice::no)
 			return;
 	}
 }
@@ -133,9 +135,10 @@ dynamic_array GetDestinationList(const dynamic_array flight, std::string value)
 		}
 	}
 
-	dynamic_array list = { size, true, nullptr };
+	dynamic_array list = { size, false, nullptr };
 	if (size > 0) 
 	{
+		list.isCorrect = true;
 		list.ptr = new Flight[size];
 		int j = 0;
 		for (int i = 0; i < flight.size; i++)
@@ -159,16 +162,17 @@ dynamic_array GetWeekdayAndTimeList(const dynamic_array flight, time_type temp_t
 		if (flight.ptr[i].GetDepartureDay() == week_day[number])
 		{
 			time_type temp = flight.ptr[i].GetDepartureTime();
-			if (temp.hour_ >= temp_time.hour_ && temp.minute_ >= temp_time.minute_)
+			if ((temp.hour_ > temp_time.hour_) || (temp.hour_ == temp_time.hour_ && temp.minute_ >= temp_time.minute_))
 			{
 				size++;
 			}
 		}
 	}
 
-	dynamic_array list = { size, true, nullptr };
+	dynamic_array list = { size, false, nullptr };
 	if (size > 0) 
 	{
+		list.isCorrect = true;
 		list.ptr = new Flight[size];
 		int j = 0;
 		for (int i = 0; i < flight.size; i++)
@@ -176,7 +180,12 @@ dynamic_array GetWeekdayAndTimeList(const dynamic_array flight, time_type temp_t
 			if (flight.ptr[i].GetDepartureDay() == week_day[number])
 			{
 				time_type temp = flight.ptr[i].GetDepartureTime();
-				if (temp.hour_ >= temp_time.hour_ && temp.minute_ >= temp_time.minute_)
+				if (temp.hour_ > temp_time.hour_)
+				{
+					list.ptr[j] = flight.ptr[i];
+					j++;
+				}
+				else if (temp.hour_ == temp_time.hour_ && temp.minute_ >= temp_time.minute_) 
 				{
 					list.ptr[j] = flight.ptr[i];
 					j++;
@@ -199,10 +208,11 @@ dynamic_array GetWeekdayList(const dynamic_array flight, int number)
 		}
 	}
 
-	dynamic_array list = { size, true, nullptr };
+	dynamic_array list = { size, false, nullptr };
 
 	if (size > 0)
 	{
+		list.isCorrect = true;
 		list.ptr = new Flight[size];
 		int j = 0;
 
