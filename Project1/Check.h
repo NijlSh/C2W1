@@ -14,3 +14,4 @@ int CheckMenu(int items);
 int GetNotNegativeInt();
 int GetPositiveInt();
 int GetInt();
+bool SymbolCheck(char c);

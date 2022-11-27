@@ -66,3 +66,4 @@ std::string getLineS(std::ifstream& file)
 		throw error;
 	}
 }
+

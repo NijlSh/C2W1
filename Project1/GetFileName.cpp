@@ -52,7 +52,7 @@ std::string FileOutput()
 		if (file_path.find(".txt") >= std::string::npos) 
 		{
 			std::cout << "Не текстовый файл. Повторите ввод." << std::endl;
-			return false;
+			continue;
 		}
 
 		if (std::ifstream(file_path))

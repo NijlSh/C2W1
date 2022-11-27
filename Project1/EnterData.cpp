@@ -68,14 +68,9 @@ void EnterDestination(Flight& object)
 		getline(std::cin, temp);
 		for (const char c : temp) 
 		{
-			if (isdigit(c))
-			{
-				std::cout << "Название не должно содержать цифр. Повторите ввод." << std::endl;
-				is_correct = false;
-				break;
-			}
+			is_correct = SymbolCheck(c);
 		}
-		if (!is_correct)
+		if (is_correct)
 			continue;
 		break;
 	}

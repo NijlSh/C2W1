@@ -18,7 +18,7 @@ int CheckMenu(int items)
 		{
 			std::cout << std::endl;
 			std::cout << ex_value << " – не существующий пункт меню. Повторите ввод: ";
-			return 0;
+			continue;
 		}
 	}
 }
@@ -103,4 +103,12 @@ int GetPositiveInt()
 int GetInt() 
 {
 	return GetValue<int>();
+}
+
+bool SymbolCheck(char c) {
+	if (!(static_cast<int>(c) == 45 || (static_cast<int>(c) >= 65 && static_cast<int>(c) <= 90) || (static_cast<int>(c) >= -64 && static_cast<int>(c) <= -1) || (static_cast<int>(c) >= 97 && static_cast<int>(c) <= 122)))
+	{
+		return true;
+	}
+	return false;
 }

@@ -62,9 +62,10 @@ dynamic_array FileInput()
 			time_type time_ = { hour, minute };
 
 			std::string destination = getLineS(file);
-			for (char& c : destination)
+
+			for (char c : destination)
 			{
-				if (isdigit(c))
+				if (SymbolCheck(c))
 					throw error;
 			}
 
@@ -106,6 +107,7 @@ dynamic_array FileInput()
 		std::cout << "Ошибка при чтении информации из файла." << std::endl;
 		file.close();
 		temp.isCorrect = false;
+		system("pause");
 		return temp;
 	}
 }
