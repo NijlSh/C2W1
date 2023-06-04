@@ -106,9 +106,7 @@ int GetInt()
 }
 
 bool SymbolCheck(char c) {
-	if (!(static_cast<int>(c) == 45 || (static_cast<int>(c) >= 65 && static_cast<int>(c) <= 90) || (static_cast<int>(c) >= -64 && static_cast<int>(c) <= -1) || (static_cast<int>(c) >= 97 && static_cast<int>(c) <= 122)))
-	{
+	if (isdigit(static_cast<unsigned char>(c)))
 		return true;
-	}
 	return false;
 }

@@ -69,9 +69,12 @@ void EnterDestination(Flight& object)
 		for (const char c : temp) 
 		{
 			is_correct = SymbolCheck(c);
+			if (is_correct)
+			{
+				std::cout << "Пункт назначения не должен содержать цифр." << std::endl;
+				continue;
+			}
 		}
-		if (is_correct)
-			continue;
 		break;
 	}
 	object.SetDestination(temp);
